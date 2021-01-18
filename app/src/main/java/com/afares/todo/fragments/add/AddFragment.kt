@@ -69,7 +69,6 @@ class AddFragment : Fragment() {
         }
     }
 
-
     private fun showToast(text: String) {
         GlobalScope.launch(Dispatchers.Main) {
             Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
