@@ -29,10 +29,10 @@
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/recyclerView"
         app:layout_constraintStart_toStartOf="@+id/recyclerView"
-        app:layout_constraintTop_toBottomOf="@+id/no_data_ageView" />
+        app:layout_constraintTop_toBottomOf="@+id/no_data_ImageView" />
 
     <ImageView
-        android:id="@+id/no_data_ageView"
+        android:id="@+id/no_data_ImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:contentDescription="@string/todo"

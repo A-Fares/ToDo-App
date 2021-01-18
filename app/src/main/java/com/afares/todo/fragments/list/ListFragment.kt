@@ -6,10 +6,12 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afares.todo.R
 import com.afares.todo.data.viewmodel.ToDoViewModel
+import com.afares.todo.fragments.SharedViewModel
 import kotlinx.android.synthetic.main.fragment_list.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -17,6 +19,8 @@ import kotlinx.coroutines.launch
 
 
 class ListFragment : Fragment() {
+
+    private val mSharedViewModel: SharedViewModel by viewModels()
 
     private val mToDoViewModel: ToDoViewModel by viewModels()
 
@@ -34,10 +38,14 @@ class ListFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
 
-        mToDoViewModel.getAllData.observe(viewLifecycleOwner, { date ->
-            adapter.setData(date)
+        mToDoViewModel.getAllData.observe(viewLifecycleOwner, { data ->
+            mSharedViewModel.cechIfDatabaseEmpty(data)
+            adapter.setData(data)
         })
 
+        mSharedViewModel.emptyDatabase.observe(viewLifecycleOwner, Observer {
+            showEmptyDatabaseViews(it)
+        })
 
         view.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_listFragment_to_addFragment)
@@ -50,6 +58,16 @@ class ListFragment : Fragment() {
         setHasOptionsMenu(true)
 
         return view
+    }
+
+    private fun showEmptyDatabaseViews(emptyDatabase: Boolean) {
+        if (emptyDatabase) {
+            view?.no_data_ImageView?.visibility = View.VISIBLE
+            view?.no_data_textView?.visibility = View.VISIBLE
+        } else {
+            view?.no_data_ImageView?.visibility = View.INVISIBLE
+            view?.no_data_textView?.visibility = View.INVISIBLE
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
