@@ -82,5 +82,4 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
-
 }
