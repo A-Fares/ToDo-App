@@ -14,7 +14,6 @@ import com.afares.todo.data.viewmodel.ToDoViewModel
 import com.afares.todo.databinding.FragmentUpdateBinding
 import com.afares.todo.fragments.SharedViewModel
 import kotlinx.android.synthetic.main.fragment_update.*
-import kotlinx.android.synthetic.main.fragment_update.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

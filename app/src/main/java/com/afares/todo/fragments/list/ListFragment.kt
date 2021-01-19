@@ -16,6 +16,7 @@ import com.afares.todo.data.viewmodel.ToDoViewModel
 import com.afares.todo.databinding.FragmentListBinding
 import com.afares.todo.fragments.SharedViewModel
 import com.afares.todo.fragments.list.adapter.ListAdapter
+import com.afares.todo.utils.hideKeyboard
 import com.google.android.material.snackbar.Snackbar
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 import kotlinx.coroutines.Dispatchers
@@ -53,6 +54,9 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
 
         // Set Menu
         setHasOptionsMenu(true)
+
+        // Hide soft Keyboard
+        hideKeyboard(requireActivity())
 
         return binding.root
     }
