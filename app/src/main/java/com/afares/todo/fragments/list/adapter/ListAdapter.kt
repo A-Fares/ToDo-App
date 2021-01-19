@@ -2,13 +2,14 @@ package com.afares.todo.fragments.list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.afares.todo.data.model.ToDoData
 import com.afares.todo.databinding.RowLayoutBinding
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.DataViewHolder>() {
 
-     var dataList = emptyList<ToDoData>()
+    var dataList = emptyList<ToDoData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
         return DataViewHolder.from(parent)
@@ -24,8 +25,10 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.DataViewHolder>() {
     }
 
     fun setData(toDoData: List<ToDoData>) {
+        val toDoDiffUtil = ToDoDiffUtil(dataList, toDoData)
+        val toDoDiffResult = DiffUtil.calculateDiff(toDoDiffUtil)
         this.dataList = toDoData
-        notifyDataSetChanged()
+        toDoDiffResult.dispatchUpdatesTo(this)
     }
 
     class DataViewHolder(private val binding: RowLayoutBinding) :
