@@ -3,13 +3,13 @@ package com.afares.todo.fragments.list
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.widget.SearchView
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.afares.todo.R
 import com.afares.todo.data.model.ToDoData
 import com.afares.todo.data.viewmodel.ToDoViewModel
@@ -60,7 +60,8 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
     private fun initRecyclerView() {
         val recyclerView = binding.recyclerView
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(requireActivity())
+        recyclerView.layoutManager =
+            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         recyclerView.itemAnimator = SlideInUpAnimator().apply {
             addDuration = 300
         }
