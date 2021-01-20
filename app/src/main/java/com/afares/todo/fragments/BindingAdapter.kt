@@ -2,7 +2,6 @@ package com.afares.todo.fragments
 
 import android.os.Build
 import android.view.View
-import android.widget.Spinner
 import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -38,21 +37,7 @@ class BindingAdapter {
             }
         }
 
-        @BindingAdapter("android:parsePriorityToInt")
-        @JvmStatic
-        fun parsePriorityToInt(view: Spinner, priority: Priority) {
-            when (priority) {
-                Priority.HIGH -> {
-                    view.setSelection(0)
-                }
-                Priority.MEDIUM -> {
-                    view.setSelection(1)
-                }
-                Priority.LOW -> {
-                    view.setSelection(2)
-                }
-            }
-        }
+
 
         @RequiresApi(Build.VERSION_CODES.M)
         @BindingAdapter("android:parsePriorityColor")
