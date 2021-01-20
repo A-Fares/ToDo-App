@@ -48,7 +48,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
 
         // Observe LiveData
         mToDoViewModel.getAllData.observe(viewLifecycleOwner, { data ->
-            mSharedViewModel.cechIfDatabaseEmpty(data)
+            mSharedViewModel.checkIfDatabaseEmpty(data)
             adapter.setData(data)
         })
 
