@@ -1,6 +1,6 @@
 # ToDo-App
 
- ToDo App for take a quick Daily Notes and you can determined the priority, Update or delete Notes.
+ ToDo App for taking a quick Daily Notes and you can determined the priority, Update or delete Notes.
 ( MVVM - Room - Coroutine - Navigantion Components - Matrial Design - Data Binding - RecyclerView Animantion )
 
 <br/>
